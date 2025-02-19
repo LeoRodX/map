@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карта Ленинградской области</title>
+    <script src="https://api-maps.yandex.ru/2.1/?ccbf550e-3043-4586-a5cc-85642cd8c4e8&lang=ru_RU" type="text/javascript"></script>
+    <style>
+        #map {
+            width: 100%;
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script type="text/javascript">
+        ymaps.ready(init);
+
+        function init() {
+            var myMap = new ymaps.Map("map", {
+                center: [59.934280, 30.335099], // Центр карты (Ленинградская область)
+                zoom: 9
+            });
+
+            // Добавление метки в Гатчине
+            var gatchinaMarker = new ymaps.Placemark([59.568330, 30.122892], {
+                hintContent: 'Гатчина',
+                balloonContent: 'Гатчина'
+            }, {
+                iconLayout: 'default#image',
+                iconImageHref: 'img.png', // Путь к вашему изображению
+                iconImageSize: [60, 60],
+                iconImageOffset: [-15, -15]
+            });
+
+            // Добавление метки в Кировске
+            var kirovskMarker = new ymaps.Placemark([59.881111, 30.981111], {
+                hintContent: 'Кировск',
+                balloonContent: 'Кировск'
+            }, {
+                iconLayout: 'default#image',
+                iconImageHref: 'img.png', // Путь к вашему изображению
+                iconImageSize: [60, 60],
+                iconImageOffset: [-15, -15]
+            });
+
+            myMap.geoObjects.add(gatchinaMarker);
+            myMap.geoObjects.add(kirovskMarker);
+        }
+    </script>
+</body>
+</html>
